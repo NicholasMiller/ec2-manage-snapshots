@@ -1,0 +1,10 @@
+;; =======================================================
+;; EC2 Manage Snapshots Config File
+;;
+;; Place your ec2 access key and secret access key here
+;; =======================================================
+
+ec2.default_access_key = ""
+ec2.default_secret_access_key = ""
+ec2.default_region = "us-east-1a"
+
