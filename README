@@ -1,0 +1,44 @@
+
+About This Script
+===============================
+ec2-manage-snapshots is a php command line script that removes Amazon EBS snapshots older than one week for a given volume. While pruning, the script keeps one backup from every Sunday for the previous four weeks, and backups from the first of everymonth previous.
+
+This script is a rewrite from http://www.thecloudsaga.com/aws-ec2-manage-snapshots/, but with improvements.
+
+What's New
+===============================
+    * A complete rewrite using Zend Framework and object oriented design
+    * Accounts for more than one backup a day
+    * Uses Amazon's newest API provided in Zend Framework
+    * Addresses snapshots which are in use by AMI images
+    * Access key and secret key can now be included as command line arguments
+    * Configuration parameters have been moved outside of the script
+    * Added validation for amazon regions with graceful exit when an incorrect region is supplied
+    * Added a quiet mode to suppress output
+
+Getting Started
+===============================
+Upon downloading the application, a config.ini file must be created under the project's "etc" directory. You can copy the included config.ini-dist.
+
+Basic Usage
+===============================
+ec2-prune-snapshots command line options
+
+Usage: ec2-prune-snapshots.php [ options ]
+--volume|-v <string>     EC2 Volume ID to prune
+--region|-r <string>     EC2 region
+--dry-run|-d             Will not perform any actions, but will output what would otherwise have been completed
+--access-key|-a <string> AWS access key. If not provided the value will be taken from the ../etc/config.ini file
+--secret-key|-s <string> AWS secret key. If not provided the value will be taken from the ../etc/config.ini file
+--verbose|-t             Display progress to stdout
+--help|-h                Show this help screen
+--quiet|-q               Supress output which is not error related
+
+Configuration File
+===============================
+Some defaults can be set in the application's config.ini file. The following may be supplied.
+
+ec2.default_access_key = ""
+ec2.default_secret_access_key = ""
+ec2.default_region = ""
+
